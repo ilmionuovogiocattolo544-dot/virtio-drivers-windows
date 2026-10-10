@@ -162,7 +162,7 @@ RUN --mount=type=cache,target=/opt/cargo/registry \
 FROM toolchain AS mesa-build
 
 ARG MESA_ARCHIVE_URL=https://gitlab.freedesktop.org/anonymix007/mesa/-/archive/venus-win32/mesa-venus-win32.tar.gz
-ARG MESA_TREE_SHA256=9070b043639cf230dbcedbe2614d649101c12e0a9c4ab2836c201b8ab652eab0
+ARG MESA_TREE_SHA256=739ff4f63e80ee627ed63b7376a7027f7ad7f0c61eecee83b8d556d7ff1d6f2d
 ARG WINSDKVER=10.0.26100.0
 
 COPY --from=ewdk /opt/ewdk /opt/ewdk
