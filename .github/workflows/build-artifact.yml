@@ -1,0 +1,27 @@
+name: Build driver artifact
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stop if required build configuration is missing
+        run: |
+          test -f Dockerfile
+          test -f dist.sh
+          grep -q 'target: artifact' .github/workflows/build.yml
+
+      - name: Build driver package
+        run: |
+          echo "The upstream Docker build requires its pinned build arguments and named contexts."
+          echo "Use the upstream Build package configuration before enabling this workflow."
+          exit 1
