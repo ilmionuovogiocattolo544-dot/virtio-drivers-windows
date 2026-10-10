@@ -172,7 +172,7 @@ COPY --from=ewdk /opt/ewdk /opt/ewdk
 # stops. Changing the pin intentionally invalidates this layer.
 RUN set -eux; \
     mkdir -p /src/mesa; \
-    curl --fail --location --retry 5 "${MESA_ARCHIVE_URL}" -o /tmp/mesa.tar.gz; \
+    curl --fail --location --retry 5 --header "Cache-Control: no-cache" "${MESA_ARCHIVE_URL}" -o /tmp/mesa.tar.gz; \
     tar -xzf /tmp/mesa.tar.gz -C /src/mesa --strip-components=1; \
     rm /tmp/mesa.tar.gz; \
     actual="$(cd /src/mesa && tar \
