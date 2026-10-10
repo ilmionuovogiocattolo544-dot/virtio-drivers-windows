@@ -183,7 +183,7 @@ RUN set -eux; \
       --numeric-owner \
       -cf - . | sha256sum | awk '{print $1}')"; \
     echo "Mesa normalized tree: ${actual}"; \
-    echo "FOUND_REAL_HASH: ${actual}"
+    echo "REAL_HASH_VAL: ${actual}" echo "FOUND_REAL_HASH: ${actual}"echo "FOUND_REAL_HASH: ${actual}" exit 1
 
 # Populate precisely the WDK headers listed by the pinned Mesa source tree.
 RUN set -eux; \
@@ -547,3 +547,4 @@ RUN set -eux; \
 
 FROM scratch AS artifact
 COPY --from=package /src/kmd/target/dist/ /
+# Force cache bypass 1791656735
